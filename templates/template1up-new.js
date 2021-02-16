@@ -1,4 +1,4 @@
-import templateKlarna from "./templateKlarna"
+import displayKlarnaPrice from './snippets';
 
 export default function template1up(products, showTags, showBrand, showKlarna) {
   return `<!-- grid gen -->
@@ -8,10 +8,7 @@ export default function template1up(products, showTags, showBrand, showKlarna) {
         <table width="500" border="0" cellspacing="0" cellpadding="0" align="center">
   ${products.map((p) => {
     const tags = p.tags.join('&nbsp;· ');
-    // get price from '$10'
-    const price = parseInt(p.price.slice(1), 10);
-    // if klarna price rounded show it ($22) else always show 2 digits ($22.25 or $22.50)
-    const klarna = price % 4 === 0 ? price / 4 : (price / 4).toFixed(2);
+    const klarna = displayKlarnaPrice(p.price);
     return `
           <!-- next pick -->
           <tr>
@@ -24,22 +21,33 @@ export default function template1up(products, showTags, showBrand, showKlarna) {
           <tr>
             <td align="center" style="line-height:25px;padding-bottom:10px;padding-top:10px;font-family:Helvetica, Arial, sans-serif; font-size:16px;">
             ${p.textLink}
-                ${(showTags && p.tags) ? `
+                ${(showTags && tags) ? `
                 <span style="color:#C0143C;letter-spacing:0.01em;line-height:25px;"><b>${tags}</b></span>
                 ` : ''}
               </a>
             </td>
           </tr>
           <tr>
-            <td align="center" style="line-height:25px;padding-bottom:25px;font-family:Helvetica, Arial, sans-serif; font-size:20px;">
-            ${p.textLink}
+          ${showKlarna ? `
+            <td align="center" style="line-height:25px;font-family:Helvetica, Arial, sans-serif; font-size:20px;">` : `
+            <td align="center" style="line-height:25px;padding-bottom:25px;font-family:Helvetica, Arial, sans-serif; font-size:20px;">`}
+              ${p.textLink}
                 <span style="letter-spacing:0.01em; color:#000000;">
                 ${showBrand ? `<b>${p.brandName}</b><br/>` : ''}${p.productName}, ${(p.salePrice) ? `<s>${p.price}</s> <span style="color:red">${p.salePrice}</span>` : p.price} ${p.valuePrice || ''}
                 </span>
-            ${templateKlarna(showKlarna, klarna)}
+                ${showKlarna ? `
+                <span style="letter-spacing:0.01em; color:gray;"><br />Or pay in 4 interest-free payments of $${klarna}</span><br />
+                ` : ''}
               </a>
             </td>
-          </tr>`;
+          </tr>
+          ${showKlarna ? `
+          <tr>
+            <td align="center" style="padding-bottom:25px;">
+              <img src="http://images.harmony.epsilon.com/ContentHandler/images?id=8fb824b4-e467-4831-b531-1e37d63881fd" width="76" height="30" border="0" style="display:block;" alt="Klarna">
+            </td>
+          </tr>` : ''}
+          `;
   }).join('')}
         </table>
       </td>
