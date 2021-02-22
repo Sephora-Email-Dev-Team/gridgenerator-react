@@ -7,6 +7,7 @@ import template1up from '../../../templates/template1up';
 import template1upnew from '../../../templates/template1up-new';
 import template2x4 from '../../../templates/template2x4';
 import template2x4new from '../../../templates/template2x4-new';
+import template3x2new from '../../../templates/template3x2-new';
 import templatec2x4 from '../../../templates/templateC2x4';
 import templatec3x1 from '../../../templates/templateC3x1';
 
@@ -175,6 +176,8 @@ class App extends React.Component {
       productsHtml = template2x4(products, showTags, showBrand, showKlarna).replace(/\n\s+\n/g, '\n');
     } else if (products.length > 0 && gridType === 'twobyfournew') {
       productsHtml = template2x4new(products, showTags, showBrand, showKlarna).replace(/\n\s+\n/g, '\n');
+    } else if (products.length > 0 && gridType === 'threebytwonew') {
+      productsHtml = template3x2new(products, showTags, showBrand, showKlarna).replace(/\n\s+\n/g, '\n');
     } else if (gridType === 'ctwobyfour') {
       productsHtml = templatec2x4(certonaTag).replace(/\n\s+\n/g, '\n');
     } else if (gridType === 'cthreebyone') {
@@ -240,6 +243,15 @@ class App extends React.Component {
               grid
               {' '}
               <input type="radio" id="twobyfournew" name="gridType" value="twobyfournew" onChange={this.handleInputChange} checked={gridType === 'twobyfournew'} />
+            </label>
+            <label htmlFor="threebytwonew">
+              3x2
+              {' '}
+              <span className="newtag">NEW</span>
+              {' '}
+              grid
+              {' '}
+              <input type="radio" id="threebytwonew" name="gridType" value="threebytwonew" onChange={this.handleInputChange} checked={gridType === 'threebytwonew'} />
             </label>
             <br />
             <br />
@@ -337,12 +349,12 @@ class App extends React.Component {
               name="links"
               rows="25"
               cols="100"
-              defaultValue={`<a href="[@trackurl LinkID='' LinkName='shiseidofirmingset' LinkTag='pl-p1' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P463953?skuId=2374296&$deep_link=true[/@trackurl]"  target="_blank">
-<a href="[@trackurl LinkID='' LinkName='saintjaneglowkit' LinkTag='pl-p2' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P463935?skuId=2369841&$deep_link=true[/@trackurl]"  target="_blank">
-<a href="[@trackurl LinkID='' LinkName='slipbeautygiftset' LinkTag='pl-p3' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P463350?skuId=2044139&$deep_link=true[/@trackurl]"  target="_blank">
-<a href="[@trackurl LinkID='' LinkName='hourglassconfessionsduo' LinkTag='pl-p4' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P463862?skuId=2378610&$deep_link=true[/@trackurl]"  target="_blank">
-<a href="[@trackurl LinkID='' LinkName='dennisgrossdailypeel' LinkTag='pl-p4' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P269122?skuId=1499482&$deep_link=true[/@trackurl]" target="_blank">
-<a href="[@trackurl LinkID='' LinkName='carolinaherreraparfum' LinkTag='pl-p5' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P420533?skuId=1960707&$deep_link=true[/@trackurl]" target="_blank">
+              defaultValue={`<a href="[@trackurl LinkID='' LinkName='milksunshinetint' LinkTag='pl-p1' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P410176?skuId=2414258&$deep_link=true[/@trackurl]"  target="_blank">
+<a href="[@trackurl LinkID='' LinkName='ilialipmask' LinkTag='pl-p2' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P467765?skuId=2410561&$deep_link=true[/@trackurl]"  target="_blank">
+<a href="[@trackurl LinkID='' LinkName='kosassmoothingpowder' LinkTag='pl-p3' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P468685?skuId=2414373&$deep_link=true[/@trackurl]"  target="_blank">
+<a href="[@trackurl LinkID='' LinkName='sceyeshadowpalette' LinkTag='pl-p4' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P461516?skuId=2353027&$deep_link=true[/@trackurl]"  target="_blank">
+<a href="[@trackurl LinkID='' LinkName='biteupswingmascara' LinkTag='pl-p5' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P467605?skuId=2414456&$deep_link=true[/@trackurl]"  target="_blank">
+<a href="[@trackurl LinkID='' LinkName='saiesupergelhighlighter' LinkTag='pl-p6' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P468206?skuId=2414027&$deep_link=true[/@trackurl]"  target="_blank">
 <a href="[@trackurl LinkID='' LinkName='ctminilipsticklipliner' LinkTag='pl-p6' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458268?skuId=2339620&$deep_link=true[/@trackurl]" target="_blank">
 <a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p7' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
             />
