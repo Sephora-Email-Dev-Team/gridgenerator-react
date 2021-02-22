@@ -351,6 +351,10 @@ label {
   margin-right: 25px;
 }
 
+#country {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
 #checkboxes,
 #badges,
 #typeofgrid,

@@ -22,8 +22,6 @@ app.get('/skus/:sku', (req, res) => {
   });
 });
 
-// https://www.sephora.com/ca/en/api/catalog/skus/1960707
-
 app.use(express.static('./client/dist'));
 
 app.listen(port, () => console.log(`Server is running on ${port} port`));

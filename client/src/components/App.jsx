@@ -196,7 +196,6 @@ class App extends React.Component {
         </header>
         <article className="fixed">
           <div id="country">
-            <h3>Country</h3>
             <label htmlFor="country-us">
               English
               {' '}
