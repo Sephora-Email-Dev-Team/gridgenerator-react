@@ -34,6 +34,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       textareaValue: '',
+      countryType: 'us',
       gridType: 'twobyfournew',
       showTags: true,
       showBrand: true,
@@ -50,7 +51,8 @@ class App extends React.Component {
 
   // sending get request to proxy
   getData(sku, skuToLinkMap) {
-    return fetch(`/skus/${sku}`)
+    const country = this.state.countryType;
+    return fetch(`/skus/${sku}?country=${country}`)
       .then((response) => response.json())
       // .then(data => { console.log(data); return data; })
       .then((data) => {
@@ -164,7 +166,8 @@ class App extends React.Component {
 
   render() {
     const {
-      products, textareaValue, gridType, showTags, showBrand, activeTab, certonaTag, showKlarna,
+      countryType, products, textareaValue, gridType, showTags,
+      showBrand, activeTab, certonaTag, showKlarna,
     } = this.state;
     let productsHtml = '';
     if (products.length > 0 && gridType === 'oneup') {
@@ -192,6 +195,19 @@ class App extends React.Component {
           <div className="topline" />
         </header>
         <article className="fixed">
+          <div id="country">
+            <h3>Country</h3>
+            <label htmlFor="country-us">
+              English
+              {' '}
+              <input type="radio" id="country-us" name="countryType" value="us" onChange={this.handleInputChange} checked={countryType === 'us'} />
+            </label>
+            <label htmlFor="country-ca">
+              Canada
+              {' '}
+              <input type="radio" id="country-ca" name="countryType" value="ca" onChange={this.handleInputChange} checked={countryType === 'ca'} />
+            </label>
+          </div>
           <h2>Step 1: Generate your data</h2>
           <form onSubmit={this.handleFormSubmit}>
             <div>
