@@ -13,7 +13,7 @@ export default function templatebirb(products, type) {
         </td>`;
   }
 
-  const mainImage = (type === 'comingSoon')
+  const mainImage = (type === 'comingsoon')
     ? `
   <tr>
     <td align="center" style="padding:40px 0 50px;border-top:1px solid #000000;">

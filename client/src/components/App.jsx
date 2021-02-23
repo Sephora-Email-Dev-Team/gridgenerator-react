@@ -45,14 +45,14 @@ class App extends React.Component {
       activeTab: 'codeview',
       certonaTag: '',
       showKlarna: false,
-      birb: false,
+      templateType: 'broadcast',
       birbBrand: [],
       birbProduct: [],
       birbLinks: [],
       birbPoints: [],
       birbSkus: [],
       birbProducts: [],
-      birbType: 'comingSoo',
+      birbType: 'availablenow',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBirbInputChange = this.handleBirbInputChange.bind(this);
@@ -183,22 +183,21 @@ class App extends React.Component {
     const {
       birbBrand, birbProduct, birbLinks, birbPoints, birbSkus,
     } = this.state;
-    // create products array
     const newProducts = [];
     for (let i = 0; i < birbBrand.length; i += 1) {
       const item = {
-        brandName: birbBrand[i],
-        productName: birbProduct[i],
-        imageLink: birbLinks[i],
-        textLink: birbLinks[i].replace('>', ' style="text-decoration:none;color:#000000;">'),
-        pointValue: birbPoints[i].replace('PT', ''),
-        skuId: birbSkus[i],
+        brandName: birbBrand[i] || 'Placeholder Brand Name',
+        productName: birbProduct[i] || 'Placeholder Product Name',
+        imageLink: birbLinks[i] || '<a href="#">',
+        textLink: (birbLinks[i] || '<a href="#">').replace('>', ' style="text-decoration:none;color:#000000;">'),
+        pointValue: (birbPoints[i] || '100').toUpperCase().replace('PT', ''),
+        skuId: birbSkus[i] || '',
       };
       newProducts.push(item);
     }
     this.setState({
       birbProducts: newProducts,
-    }, () => console.log(this.state));
+    });
   }
 
   // getting the sku number from the url
@@ -216,8 +215,8 @@ class App extends React.Component {
 
   render() {
     const {
-      countryType, products, textareaValue, gridType, showTags,
-      showBrand, activeTab, certonaTag, showKlarna, birb, birbProducts,
+      countryType, products, textareaValue, gridType, showTags, templateType,
+      showBrand, activeTab, certonaTag, showKlarna, birbProducts,
       birbBrand, birbProduct, birbLinks, birbPoints, birbSkus, birbType,
     } = this.state;
     let productsHtml = '';
@@ -235,7 +234,7 @@ class App extends React.Component {
       productsHtml = templatec2x4(certonaTag).replace(/\n\s+\n/g, '\n');
     } else if (gridType === 'cthreebyone') {
       productsHtml = templatec3x1(certonaTag).replace(/\n\s+\n/g, '\n');
-    } else if (birb && birbProducts.length > 0) {
+    } else if (birbProducts.length > 0 && templateType === 'birb') {
       productsHtml = templatebirb(birbProducts, birbType).replace(/\n\s+\n/g, '\n');
     }
     return (
@@ -250,7 +249,19 @@ class App extends React.Component {
           <div className="topline" />
         </header>
         <article className="fixed">
-          {birb
+          <div className="form-item">
+            <label htmlFor="broadcast">
+              Broadcast templates
+              {' '}
+              <input type="radio" id="broadcast" name="templateType" value="broadcast" onChange={this.handleInputChange} checked={templateType === 'broadcast'} />
+            </label>
+            <label htmlFor="birb">
+              BIRB templates
+              {' '}
+              <input type="radio" id="birb" name="templateType" value="birb" onChange={this.handleInputChange} checked={templateType === 'birb'} />
+            </label>
+          </div>
+          { templateType === 'birb'
             ? (
               <Birb
                 {...({
@@ -259,25 +270,15 @@ class App extends React.Component {
                   birbLinks,
                   birbPoints,
                   birbSkus,
+                  birbType,
                 })}
-                handleInputChange={this.handleBirbInputChange}
+                handleBirbInputChange={this.handleBirbInputChange}
                 handleBirbFormSubmit={this.handleBirbFormSubmit}
+                handleInputChange={this.handleInputChange}
               />
             )
             : (
               <div>
-                <div id="country">
-                  <label htmlFor="country-us">
-                    English
-                    {' '}
-                    <input type="radio" id="country-us" name="countryType" value="us" onChange={this.handleInputChange} checked={countryType === 'us'} />
-                  </label>
-                  <label htmlFor="country-ca">
-                    Canada
-                    {' '}
-                    <input type="radio" id="country-ca" name="countryType" value="ca" onChange={this.handleInputChange} checked={countryType === 'ca'} />
-                  </label>
-                </div>
                 <h2>Step 1: Generate your data</h2>
                 <form onSubmit={this.handleFormSubmit}>
                   <div>
@@ -291,6 +292,18 @@ class App extends React.Component {
                     </label>
                   </div>
                   <br />
+                  <div className="form-row" id="country">
+                    <label htmlFor="country-us">
+                      US
+                      {' '}
+                      <input type="radio" id="country-us" name="countryType" value="us" onChange={this.handleInputChange} checked={countryType === 'us'} />
+                    </label>
+                    <label htmlFor="country-ca">
+                      Canada
+                      {' '}
+                      <input type="radio" id="country-ca" name="countryType" value="ca" onChange={this.handleInputChange} checked={countryType === 'ca'} />
+                    </label>
+                  </div>
                   <input type="submit" value="Submit" id="submit" />
                 </form>
                 <br />
@@ -413,13 +426,11 @@ class App extends React.Component {
               </div>
             )}
           <h2>Step 3: Get your code</h2>
-          <br />
           <div id="codewindow">
-            <div className="tab">
+            <div className="form-row tab">
               <button type="button" value="codeview" onClick={this.handleTabClick}>Generated Code</button>
               <button type="button" value="preview" onClick={this.handleTabClick}>Preview</button>
             </div>
-            <br />
             {activeTab === 'codeview'
               && <textarea id="codeview" rows="25" cols="100" value={productsHtml} readOnly />}
             {activeTab === 'preview'

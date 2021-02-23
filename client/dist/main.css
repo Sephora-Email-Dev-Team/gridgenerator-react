@@ -352,10 +352,6 @@ label {
   margin-right: 25px;
 }
 
-#country {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-}
-
 #checkboxes,
 #badges,
 #typeofgrid,
@@ -470,21 +466,25 @@ form {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-form.birb {
+.form-row {
+  margin: 20px 0;
+}
+
+.birb {
   display: flex;
   flex-wrap: wrap;
 }
 
-form.birb div {
+.birb div {
   flex-grow: 1;
   margin-right: 10px;
 }
 
-form.birb textarea {
+.birb textarea {
   width: 100%;
   height: 180px;
 }
 
-form.birb label {
+.birb label {
   margin: 0;
 }
