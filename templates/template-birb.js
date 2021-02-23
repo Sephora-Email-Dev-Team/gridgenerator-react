@@ -1,7 +1,6 @@
 export default function templatebirb(products, type) {
   function productCell(p) {
     return `
-          <td style="padding: 0 30px 70px 20px; text-align: center; vertical-align: top;">
             ${p.imageLink}
               <img style="display: block;" src="http://www.sephora.com/productimages/sku/s${p.skuId}-main-Lhero.jpg" alt="${p.productName}" width="300" height="300" border="0" />
             </a><br/>
@@ -47,6 +46,7 @@ ${products.map((p, index) => {
     <td style="padding: 0 200px;">
       <table width="300" border="0" cellspacing="0" cellpadding="0" align="center">
         <tr>
+        <td style="padding-bottom:70px; text-align: center; vertical-align: top;">
           ${productCell(p)}
         </tr>
       </table>
@@ -58,11 +58,13 @@ ${products.map((p, index) => {
     <td>
       <table>
         <tr>
-          ${productCell(p)}
+          <td style="padding: 0 20px 70px 30px; text-align: center; vertical-align: top;">
+            ${productCell(p)}
         `;
     }
     return `
-          ${productCell(p)}
+          <td style="padding: 0 30px 70px 20px; text-align: center; vertical-align: top;">
+            ${productCell(p)}
         </tr>
       </table>
     </td>
