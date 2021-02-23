@@ -24,7 +24,7 @@ export default function templatebirb(products, type) {
   </tr>`
     : `
   <tr>
-    <td>
+    <td align="center" >
       <a href="[@trackurl LinkID='' LinkName='Available Now' LinkTag='txt' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='0f51c4c0-b8e1-4d28-a4c3-4beab3aa8ea5' LinkType='REDIRECT']https://www.sephora.com/rewards?$deep_link=true[/@trackurl]"  target="_blank">
         <img border="0" style="display: block" src="http://images.harmony.epsilon.com/ContentHandler/images/de0a3226-d396-4c2c-b3a8-3ede2f831505/images/20210302-750-av-now-img-v2" width="700" height="36" alt="Available Now"/>
       </a>
