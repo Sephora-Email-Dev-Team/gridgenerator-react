@@ -1,16 +1,16 @@
 export default function templatebirb(products, type) {
   function productCell(p) {
     return `
-        <td style="padding: 0 30px 70px 20px; text-align: center; vertical-align: top;">
-          ${p.imageLink}
-            <img style="display: block;" src="http://www.sephora.com/productimages/sku/s${p.skuId}-main-Lhero.jpg" alt="${p.productName}" width="300" height="300" border="0" />
-          </a><br/>
-          ${p.textLink}
-            <span style="font-family: Helvetica Neue, Helvetica, sans-serif; font-size: 26px; line-height: 40px;color: #000000;"><b>${p.brandName}</b></span><br/>
-            <span style="font-family: Helvetica, sans-serif; font-size: 26px; line-height: 30px;color: #000000;">${p.productName}</span><br/>
-            <span style="font-family: Helvetica, sans-serif; font-size: 26px; line-height: 40px; color: #797979;">${p.pointValue} points</span>
-          </a>
-        </td>`;
+          <td style="padding: 0 30px 70px 20px; text-align: center; vertical-align: top;">
+            ${p.imageLink}
+              <img style="display: block;" src="http://www.sephora.com/productimages/sku/s${p.skuId}-main-Lhero.jpg" alt="${p.productName}" width="300" height="300" border="0" />
+            </a><br/>
+            ${p.textLink}
+              <span style="font-family: Helvetica Neue, Helvetica, sans-serif; font-size: 26px; line-height: 40px;color: #000000;"><b>${p.brandName}</b></span><br/>
+              <span style="font-family: Helvetica, sans-serif; font-size: 26px; line-height: 30px;color: #000000;">${p.productName}</span><br/>
+              <span style="font-family: Helvetica, sans-serif; font-size: 26px; line-height: 40px; color: #797979;">${p.pointValue} points</span>
+            </a>
+          </td>`;
   }
 
   const mainImage = (type === 'comingsoon')
@@ -25,8 +25,8 @@ export default function templatebirb(products, type) {
     : `
   <tr>
     <td>
-      <a href="[@trackurl LinkID='' LinkName='available Now' LinkTag='txt' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='0f51c4c0-b8e1-4d28-a4c3-4beab3aa8ea5' LinkType='REDIRECT']https://www.sephora.com/rewards?$deep_link=true[/@trackurl]"  target="_blank">
-        <img border="0" style="display: block" src="http://images.harmony.epsilon.com/ContentHandler/images/de0a3226-d396-4c2c-b3a8-3ede2f831505/images/03022021v3-BIRB-750pt-email-dedicated-sneakpeek1-Dr-Barbara-Strum-en-us_02.jpg" width="700" height="36" alt="Available Now"/>
+      <a href="[@trackurl LinkID='' LinkName='Available Now' LinkTag='txt' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='0f51c4c0-b8e1-4d28-a4c3-4beab3aa8ea5' LinkType='REDIRECT']https://www.sephora.com/rewards?$deep_link=true[/@trackurl]"  target="_blank">
+        <img border="0" style="display: block" src="http://images.harmony.epsilon.com/ContentHandler/images/de0a3226-d396-4c2c-b3a8-3ede2f831505/images/20210302-750-av-now-img-v2" width="700" height="36" alt="Available Now"/>
       </a>
     </td>
   </tr>
@@ -42,9 +42,19 @@ export default function templatebirb(products, type) {
 <table width="700" border="0" cellspacing="0" cellpadding="0" align="center">
   ${mainImage}
 ${products.map((p, index) => {
+    if ((products.length % 2 === 1) && (index === products.length - 1)) {
+      return `<!-- next row --><tr>
+    <td style="padding: 0 200px;">
+      <table width="300" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+          ${productCell(p)}
+        </tr>
+      </table>
+    </td>
+  </tr>`;
+    }
     if (index % 2 === 0) {
-      return `<!-- next row -->
-  <tr>
+      return `<!-- next row --><tr>
     <td>
       <table>
         <tr>

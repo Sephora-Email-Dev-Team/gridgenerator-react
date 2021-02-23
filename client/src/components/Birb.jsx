@@ -5,7 +5,7 @@ function Birb(props) {
   const {
     birbBrand, birbProduct, birbLinks,
     birbPoints, birbSkus, handleInputChange,
-    handleBirbFormSubmit, birbType, handleBirbInputChange
+    handleBirbFormSubmit, birbType, handleBirbInputChange,
   } = props;
   return (
     <div>
