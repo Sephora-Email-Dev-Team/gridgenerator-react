@@ -291,6 +291,7 @@ textarea {
   outline-color: black;
   border: 2px solid black;
   line-height: 130%;
+  box-sizing: border-box;
 }
 
 #preview {
@@ -467,4 +468,23 @@ header {
 
 form {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+form.birb {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+form.birb div {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+form.birb textarea {
+  width: 100%;
+  height: 180px;
+}
+
+form.birb label {
+  margin: 0;
 }
