@@ -49,6 +49,7 @@ class App extends React.Component {
       birbBrand: [],
       birbProduct: [],
       birbLinks: [],
+      birbOnlineOnly: [],
       birbPoints: [],
       birbSkus: [],
       birbProducts: [],
@@ -181,7 +182,7 @@ class App extends React.Component {
 
   buildProductArray() {
     const {
-      birbBrand, birbProduct, birbLinks, birbPoints, birbSkus,
+      birbBrand, birbProduct, birbLinks, birbOnlineOnly, birbPoints, birbSkus,
     } = this.state;
     const newProducts = [];
     for (let i = 0; i < birbBrand.length; i += 1) {
@@ -191,6 +192,7 @@ class App extends React.Component {
         imageLink: birbLinks[i] || '<a href="#">',
         textLink: (birbLinks[i] || '<a href="#">').replace('>', ' style="text-decoration:none;color:#000000;">'),
         pointValue: (birbPoints[i] || '100').toUpperCase().replace('PT', ''),
+        onlineOnly: birbOnlineOnly[i] || 0,
         skuId: birbSkus[i] || '',
       };
       newProducts.push(item);
@@ -216,7 +218,7 @@ class App extends React.Component {
   render() {
     const {
       countryType, products, textareaValue, gridType, showTags, templateType,
-      showBrand, activeTab, certonaTag, showKlarna, birbProducts,
+      showBrand, activeTab, certonaTag, showKlarna, birbProducts, birbOnlineOnly,
       birbBrand, birbProduct, birbLinks, birbPoints, birbSkus, birbType,
     } = this.state;
     let productsHtml = '';
@@ -269,6 +271,7 @@ class App extends React.Component {
                   birbProduct,
                   birbLinks,
                   birbPoints,
+                  birbOnlineOnly,
                   birbSkus,
                   birbType,
                 })}

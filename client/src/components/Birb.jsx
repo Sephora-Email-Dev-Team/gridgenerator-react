@@ -3,7 +3,7 @@ import React from 'react';
 
 function Birb(props) {
   const {
-    birbBrand, birbProduct, birbLinks,
+    birbBrand, birbProduct, birbLinks, birbOnlineOnly,
     birbPoints, birbSkus, handleInputChange,
     handleBirbFormSubmit, birbType, handleBirbInputChange,
   } = props;
@@ -68,6 +68,20 @@ function Birb(props) {
               />
             </label>
           </div>
+          <div className="online-only-input">
+            <label htmlFor="onlineonly">
+              Online only:
+              {' '}
+              <br />
+              <textarea
+                wrap="off"
+                id="onlineonly"
+                name="birbOnlineOnly"
+                value={birbOnlineOnly.join('\n')}
+                onChange={handleBirbInputChange}
+              />
+            </label>
+          </div>
           <div className="link-input">
             <label htmlFor="links">
               Links:
@@ -90,7 +104,7 @@ function Birb(props) {
       <h2>Step 2: Choose your preferences</h2>
       <br />
       <div id="typeofbirb">
-        <h3>Type of the grid</h3>
+        <h3>Type of the header</h3>
         <label htmlFor="availablenow">
           Available Now
           {' '}
@@ -100,6 +114,16 @@ function Birb(props) {
           Coming Soon
           {' '}
           <input type="radio" id="comingsoon" name="birbType" value="comingsoon" onChange={handleInputChange} checked={birbType === 'comingsoon'} />
+        </label>
+        <label htmlFor="100points">
+          100 points
+          {' '}
+          <input type="radio" id="100points" name="birbType" value="100points" onChange={handleInputChange} checked={birbType === '100points'} />
+        </label>
+        <label htmlFor="250points">
+          250 points
+          {' '}
+          <input type="radio" id="250points" name="birbType" value="250points" onChange={handleInputChange} checked={birbType === '250points'} />
         </label>
       </div>
     </div>

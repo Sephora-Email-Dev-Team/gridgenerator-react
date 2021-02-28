@@ -355,7 +355,8 @@ label {
 #checkboxes,
 #badges,
 #typeofgrid,
-#tagname {
+#tagname,
+#typeofbirb {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   background-color: rgb(246, 246, 248);
   border-radius: 5px;
@@ -462,7 +463,8 @@ header {
   padding: 2px;
 }
 
-form {
+form,
+.form-item {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -478,6 +480,14 @@ form {
 .birb div {
   flex-grow: 1;
   margin-right: 10px;
+}
+
+.birb div.online-only-input {
+  flex-grow: 1;
+}
+
+.birb div.link-input {
+  flex-grow: 40;
 }
 
 .birb textarea {
