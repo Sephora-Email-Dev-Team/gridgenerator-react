@@ -95,12 +95,12 @@ class App extends React.Component {
           productName: data.primaryProduct.displayName.replace(/[®™©]/g, ''),
           tags,
           price,
-          valuePrice: data.valuePrice ? `${data.valuePrice.split(' ')[1] === "00" ? data.valuePrice.split('.')[0] : data.valuePrice.split(' ')[0]} value)` : '',
+          valuePrice: data.valuePrice ? `${data.valuePrice.split(' ')[1] === '00' ? data.valuePrice.split('.')[0] : data.valuePrice.split(' ')[0]} value)` : '',
           rating: data.primaryProduct.rating,
           imageLink: skuToLinkMap[data.skuId],
           textLink: skuToLinkMap[data.skuId].replace('>', ' style="text-decoration:none;color:#000000;">'),
           badge: badges[0],
-          salePrice: data.salePrice ? `${data.salePrice.split('.')[1] === "00" ? data.salePrice.split(".")[0] : data.salePrice}` : '',
+          salePrice: data.salePrice ? `${data.salePrice.split('.')[1] === '00' ? data.salePrice.split('.')[0] : data.salePrice}` : '',
         };
         return item;
       })
