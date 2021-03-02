@@ -1,6 +1,7 @@
 export default function templatebirb(products, type) {
   function productCell(p) {
     const imageSize = (type === '250points') ? '450' : '300';
+    const pointValue = (type === '250points') ? '250' : `${p.pointValue}`;
     return `
             ${p.imageLink}
               <img style="display: block;" src="http://www.sephora.com/productimages/sku/s${p.skuId}-main-Lhero.jpg" alt="${p.productName}" width="${imageSize}" height="${imageSize}" border="0" />
@@ -9,7 +10,7 @@ export default function templatebirb(products, type) {
               <span style="font-family: Helvetica Neue, Helvetica, sans-serif; font-size: 26px; line-height: 40px;color: #000000;"><b>${p.brandName}</b><br />
                 <span style="line-height: 30px;color: #000000;">${p.productName}</span><br />
                 ${(p.onlineOnly === '1') ? '<span style="color: #FF0000;">online only</span><br />' : ''}
-                <span style="color: #797979;">${p.pointValue} points</span>
+                <span style="color: #797979;">${pointValue} points</span>
               </span>
             </a>`;
   }
