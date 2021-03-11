@@ -13,6 +13,7 @@ import template3x2new from '../../../templates/template3x2-new';
 import templatec2x4 from '../../../templates/templateC2x4';
 import templatec3x1 from '../../../templates/templateC3x1';
 import templatebirb from '../../../templates/template-birb';
+import BroadcastBIRB from '../../../templates/templates-broadcast-BIRB';
 
 const badges = [
   {
@@ -276,18 +277,10 @@ class App extends React.Component {
           <div className="topline" />
         </header>
         <article className="fixed">
-          <div className="form-item">
-            <label htmlFor="broadcast">
-              Broadcast templates
-              {' '}
-              <input type="radio" id="broadcast" name="templateType" value="broadcast" onChange={this.handleInputChange} checked={templateType === 'broadcast'} />
-            </label>
-            <label htmlFor="birb">
-              BIRB templates
-              {' '}
-              <input type="radio" id="birb" name="templateType" value="birb" onChange={this.handleInputChange} checked={templateType === 'birb'} />
-            </label>
-          </div>
+          <BroadcastBIRB
+            templateType={this.state.templateType}
+            handleInputChange={this.handleInputChange}
+          />
           { templateType === 'birb'
             ? (
               <Birb
