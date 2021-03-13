@@ -1,4 +1,4 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* ! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css
 
 /* Document
    ========================================================================== */
@@ -28,7 +28,7 @@ body {
 }
 
 .fixed {
-  width: 800px;
+  width: 1250px;
   margin: 0 auto;
 }
 
@@ -346,6 +346,7 @@ h1 {
 
 h3 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 label {
@@ -365,12 +366,12 @@ label {
 }
 
 #badges ul {
-  margin: 0;
+  margin-bottom: 15px;
   padding: 0;
 }
 
 #badges li {
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   list-style-type: none;
   display: inline-block;
 }
@@ -453,7 +454,7 @@ h2 {
 }
 
 header {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .newtag {
@@ -469,7 +470,7 @@ form,
 }
 
 .form-row {
-  margin: 20px 0;
+  margin: 20px;
 }
 
 .birb {
@@ -534,4 +535,46 @@ form,
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.rows {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: auto;
+}
+
+.columns {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 700px;
+}
+
+#linkgens {
+  order: 1;
+  padding: 0em 1em;
+}
+
+#typeofgrid,
+#checkboxes {
+  order: 0;
+  /* width: 350px; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  line-height: 2em;
+  /* padding: 5px; */
+  margin-right: 5px;
+}
+
+#badges {
+  width: 350px;
+  order: 0;
+  /* width: 150px; */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* line-height: 1.5em; */
+  /* padding: 5px; */
 }
