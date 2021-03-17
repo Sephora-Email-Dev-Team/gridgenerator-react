@@ -312,7 +312,8 @@ class App extends React.Component {
                   showKlarna,
                   products,
                   badges,
-                  certonaTag})}
+                  certonaTag,
+                })}
                 handleFormSubmit={this.handleFormSubmit}
                 handleInputChange={this.handleInputChange}
                 setBadge={this.setBadge}
@@ -344,8 +345,8 @@ class App extends React.Component {
 <a href="[@trackurl LinkID='' LinkName='sceyeshadowpalette' LinkTag='pl-p4' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P461516?skuId=2353027&$deep_link=true[/@trackurl]"  target="_blank">
 <a href="[@trackurl LinkID='' LinkName='biteupswingmascara' LinkTag='pl-p5' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P467605?skuId=2414456&$deep_link=true[/@trackurl]"  target="_blank">
 <a href="[@trackurl LinkID='' LinkName='saiesupergelhighlighter' LinkTag='pl-p6' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P468206?skuId=2414027&$deep_link=true[/@trackurl]"  target="_blank">
-<a href="[@trackurl LinkID='' LinkName='ctminilipsticklipliner' LinkTag='pl-p6' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458268?skuId=2339620&$deep_link=true[/@trackurl]" target="_blank">
-<a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p7' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
+<a href="[@trackurl LinkID='' LinkName='ctminilipsticklipliner' LinkTag='pl-p7' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458268?skuId=2339620&$deep_link=true[/@trackurl]" target="_blank">
+<a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p8' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
             />
           </div>
           <Modal modalStyle={this.state.modalStyle} closeModal={this.closeModal} modalMessage={this.state.modalMessage} />

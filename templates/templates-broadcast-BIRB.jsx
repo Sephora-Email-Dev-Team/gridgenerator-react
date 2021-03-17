@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 function BroadcastBIRB(props) {
   const {
-    handleInputChange, templateType
+    handleInputChange,
+    templateType,
   } = props;
   return (
-    <div className="form-item">
+    <div className="form-row">
       <label htmlFor="broadcast">
         Broadcast templates
         {' '}
