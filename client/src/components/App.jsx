@@ -4,6 +4,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react';
 import Birb from './Birb';
+import Modal from './Modal';
 import template1up from '../../../templates/template1up';
 import template1upnew from '../../../templates/template1up-new';
 import template2x4 from '../../../templates/template2x4';
@@ -54,6 +55,7 @@ class App extends React.Component {
       birbSkus: [],
       birbProducts: [],
       birbType: 'availablenow',
+      modalStyle: 'none',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBirbInputChange = this.handleBirbInputChange.bind(this);
@@ -61,6 +63,7 @@ class App extends React.Component {
     this.skuToLinkMap = {};
     this.handleTabClick = this.handleTabClick.bind(this);
     this.handleBirbFormSubmit = this.handleBirbFormSubmit.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   // sending get request to proxy
@@ -70,6 +73,10 @@ class App extends React.Component {
       .then((response) => response.json())
       // .then(data => { console.log(data); return data; })
       .then((data) => {
+        console.log(data);
+        if (data.code === 'ESOCKETTIMEDOUT') {
+          this.setState({ modalStyle: 'block' });
+        }
         let price;
         if (data.listPrice.split('.')[1] !== '00') {
           price = data.listPrice;
@@ -213,6 +220,10 @@ class App extends React.Component {
       return match[1];
     });
     return skus;
+  }
+
+  closeModal() {
+    this.setState({ modalStyle: 'none' });
   }
 
   render() {
@@ -458,6 +469,7 @@ class App extends React.Component {
 <a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p7' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
             />
           </div>
+          <Modal modalStyle={this.state.modalStyle} closeModal={this.closeModal} />
         </article>
       </div>
     );
