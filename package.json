@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/rvrita/portfolio-site#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "react": "^16.13.1",

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const cors = require('cors');
-const request = require('request');
+const axios = require('axios');
 const path = require('path');
 const express = require('express');
 
@@ -24,24 +24,19 @@ app.use(cors());
 app.get('/skus/:sku', (req, res) => {
   const regionPath = (req.query.country === 'ca') ? 'ca/en/' : '';
   const url = `https://www.sephora.com/${regionPath}${path.join('api/catalog/skus', req.params.sku)}`;
-  request({
+  axios({
     url,
     timeout: 5000,
-    agent: false,
-    pool: { maxSockets: 100 },
     headers: {
-      // https://github.com/request/request/issues/2738#issuecomment-369324868
-      Accept: 'application/json, text/plain, */*',
-      'User-Agent': 'axios/0.18.0',
+      // didn't work without user agent, but the name does not seem to matter
+      'User-Agent': 'curl',
     },
-  }, (error, response, body) => {
-    if (!error && response.statusCode === 200) {
-      res.setHeader('Set-Cookie', 'HttpOnly;Secure;SameSite=Strict');
-      res.send(body);
-    } else {
-      console.error(error);
-      res.status(500).send(error);
-    }
+    responseType: 'stream',
+  }).then((response) => {
+    response.data.pipe(res);
+  }).catch((error) => {
+    console.error(error);
+    res.status(500).send(error);
   });
 });
 
