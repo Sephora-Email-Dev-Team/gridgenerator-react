@@ -12,6 +12,8 @@ import template3x2new from '../../../templates/template3x2-new';
 import templatec2x4 from '../../../templates/templateC2x4';
 import templatec3x1 from '../../../templates/templateC3x1';
 import templatebirb from '../../../templates/template-birb';
+import BroadcastBIRB from '../../../templates/templates-broadcast-BIRB';
+import Broadcast from './Broadcast';
 
 const badges = [
   {
@@ -61,6 +63,7 @@ class App extends React.Component {
     this.skuToLinkMap = {};
     this.handleTabClick = this.handleTabClick.bind(this);
     this.handleBirbFormSubmit = this.handleBirbFormSubmit.bind(this);
+    this.setBadge = this.setBadge.bind(this);
   }
 
   // sending get request to proxy
@@ -251,18 +254,10 @@ class App extends React.Component {
           <div className="topline" />
         </header>
         <article className="fixed">
-          <div className="form-item">
-            <label htmlFor="broadcast">
-              Broadcast templates
-              {' '}
-              <input type="radio" id="broadcast" name="templateType" value="broadcast" onChange={this.handleInputChange} checked={templateType === 'broadcast'} />
-            </label>
-            <label htmlFor="birb">
-              BIRB templates
-              {' '}
-              <input type="radio" id="birb" name="templateType" value="birb" onChange={this.handleInputChange} checked={templateType === 'birb'} />
-            </label>
-          </div>
+          <BroadcastBIRB
+            templateType={this.state.templateType}
+            handleInputChange={this.handleInputChange}
+          />
           { templateType === 'birb'
             ? (
               <Birb
@@ -281,152 +276,22 @@ class App extends React.Component {
               />
             )
             : (
-              <div>
-                <h2>Step 1: Generate your data</h2>
-                <form onSubmit={this.handleFormSubmit}>
-                  <div>
-                    <label htmlFor="links">
-                      <br />
-                      Paste your links here, one each line:
-                      {' '}
-                      <br />
-                      <br />
-                      <textarea rows="25" cols="100" id="links" name="textareaValue" value={textareaValue} onChange={this.handleInputChange} />
-                    </label>
-                  </div>
-                  <br />
-                  <div className="form-row" id="country">
-                    <label htmlFor="country-us">
-                      US
-                      {' '}
-                      <input type="radio" id="country-us" name="countryType" value="us" onChange={this.handleInputChange} checked={countryType === 'us'} />
-                    </label>
-                    <label htmlFor="country-ca">
-                      Canada
-                      {' '}
-                      <input type="radio" id="country-ca" name="countryType" value="ca" onChange={this.handleInputChange} checked={countryType === 'ca'} />
-                    </label>
-                  </div>
-                  <input type="submit" value="Submit" id="submit" />
-                </form>
-                <br />
-                <br />
-                <h2 id="step2">Step 2: Choose your preferences</h2>
-                <br />
-                <div id="typeofgrid">
-                  <h3>Type of the grid</h3>
-                  <label htmlFor="oneup">
-                    1up grid
-                    {' '}
-                    <input type="radio" id="oneup" name="gridType" value="oneup" onChange={this.handleInputChange} checked={gridType === 'oneup'} />
-                  </label>
-                  <label htmlFor="oneupnew">
-                    1up
-                    {' '}
-                    <span className="newtag">NEW</span>
-                    {' '}
-                    grid
-                    {' '}
-                    <input type="radio" id="oneupnew" name="gridType" value="oneupnew" onChange={this.handleInputChange} checked={gridType === 'oneupnew'} />
-                  </label>
-                  <label htmlFor="twobyfour">
-                    2x4 grid
-                    {' '}
-                    <input type="radio" id="twobyfour" name="gridType" value="twobyfour" onChange={this.handleInputChange} checked={gridType === 'twobyfour'} />
-                  </label>
-                  <label htmlFor="twobyfournew">
-                    2x4
-                    {' '}
-                    <span className="newtag">NEW</span>
-                    {' '}
-                    grid
-                    {' '}
-                    <input type="radio" id="twobyfournew" name="gridType" value="twobyfournew" onChange={this.handleInputChange} checked={gridType === 'twobyfournew'} />
-                  </label>
-                  <label htmlFor="threebytwonew">
-                    3x2
-                    {' '}
-                    <span className="newtag">NEW</span>
-                    {' '}
-                    grid
-                    {' '}
-                    <input type="radio" id="threebytwonew" name="gridType" value="threebytwonew" onChange={this.handleInputChange} checked={gridType === 'threebytwonew'} />
-                  </label>
-                  <br />
-                  <br />
-                  <label htmlFor="ctwobyfour">
-                    Certona 2x4 grid
-                    {' '}
-                    <input type="radio" id="ctwobyfour" name="gridType" value="ctwobyfour" onChange={this.handleInputChange} checked={gridType === 'ctwobyfour'} />
-                  </label>
-                  <label htmlFor="cthreebyone">
-                    Certona 3x1 grid
-                    {' '}
-                    <input type="radio" id="cthreebyone" name="gridType" value="cthreebyone" onChange={this.handleInputChange} checked={gridType === 'cthreebyone'} />
-                  </label>
-                </div>
-                {gridType === 'ctwobyfour' || gridType === 'cthreebyone'
-                  ? (
-                    <div id="tagname">
-                      <label htmlFor="certonatag">
-                        Tag name:
-                        {' '}
-                        <input type="text" id="certonatag" name="certonaTag" value={certonaTag} onChange={this.handleInputChange} />
-                      </label>
-                    </div>
-                  )
-                  : (
-                    <div>
-                      <div id="checkboxes">
-                        <h3>Info</h3>
-                        <label htmlFor="showTags">
-                          Show Tags
-                          {' '}
-                          <input type="checkbox" id="showTags" name="showTags" checked={showTags} onChange={this.handleInputChange} />
-                        </label>
-                        <label htmlFor="showBrand">
-                          Include Brand Name
-                          {' '}
-                          <input type="checkbox" id="showBrand" name="showBrand" checked={showBrand} onChange={this.handleInputChange} />
-                        </label>
-                        <label htmlFor="showKlarna">
-                          Include Klarna Price
-                          {' '}
-                          <input type="checkbox" id="showKlarna" name="showKlarna" checked={showKlarna} onChange={this.handleInputChange} />
-                        </label>
-                      </div>
-                      <div id="badges">
-                        <h3>Badges</h3>
-                        <ul>
-                          {products.map((product, index) => {
-                            const name = `product${index}badge`;
-                            return (
-                              <React.Fragment key={product.skuId}>
-                                <li key={product.skuId}>{product.brandName}</li>
-                                <ul>
-                                  {badges.map((badge, badgeIdx) => {
-                                    const id = `product${index}badge${badgeIdx}`;
-                                    return (
-                                      <li key={product.skuId + badge.name}>
-                                        <label htmlFor={id}>
-                                          <input type="radio" id={id} name={name} checked={product.badge === badge} onChange={() => this.setBadge(index, badge)} />
-                                          {' '}
-                                          {badge.name}
-                                        </label>
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
-                              </React.Fragment>
-                            );
-                          })}
+              <Broadcast
+                {...({
+                  textareaValue,
+                  countryType,
+                  gridType,
+                  showTags,
+                  showBrand,
+                  showKlarna,
+                  products,
+                  badges,
+                  certonaTag})}
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+                setBadge={this.setBadge}
 
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                <br />
-              </div>
+              />
             )}
           <h2>Step 3: Get your code</h2>
           <div id="codewindow">
