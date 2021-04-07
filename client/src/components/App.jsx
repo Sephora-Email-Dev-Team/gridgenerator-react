@@ -64,6 +64,7 @@ class App extends React.Component {
     this.handleTabClick = this.handleTabClick.bind(this);
     this.handleBirbFormSubmit = this.handleBirbFormSubmit.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.checkBadge = this.checkBadge.bind(this);
   }
 
   // sending get request to proxy
@@ -73,7 +74,6 @@ class App extends React.Component {
       .then((response) => response.json())
       // .then(data => { console.log(data); return data; })
       .then((data) => {
-        console.log(data);
         if (data.code === 'ESOCKETTIMEDOUT') {
           this.setState({ modalStyle: 'block' });
         }
@@ -108,6 +108,7 @@ class App extends React.Component {
           textLink: skuToLinkMap[data.skuId].replace('>', ' style="text-decoration:none;color:#000000;">'),
           badge: badges[0],
           salePrice: data.salePrice ? `${data.salePrice.split('.')[1] === '00' ? data.salePrice.split('.')[0] : data.salePrice}` : '',
+          image: data.skuImages.image450,
         };
         return item;
       })
@@ -130,16 +131,33 @@ class App extends React.Component {
   }
 
   setBadge(productIdx, badge) {
+    
     const { products } = this.state;
-    const newProduct = {
-      ...products[productIdx],
-      badge,
-    };
-    const newProducts = [...products];
-    newProducts[productIdx] = newProduct;
-    this.setState({
-      products: newProducts,
-    });
+    const productImage = products[productIdx].image;
+    const newBadge = new Promise ((resolve, reject) => {this.checkBadge(resolve, badge, productImage)});
+    newBadge.then(newBadge => {
+      console.log('hello im new badge', newBadge)
+      const newProduct = {
+        ...products[productIdx],
+        badge: {name: badge.name, value: newBadge},
+      }
+
+      return newProduct;
+    }).then(newProduct => {
+        const newProducts = [...products];
+        newProducts[productIdx] = newProduct;
+        return newProducts;
+      }).then((newProducts) => this.setState({
+        products: newProducts,
+      }));
+  }
+
+  checkBadge (resolve, badge, productImage) {
+    if (badge.name === 'Allure') {
+      resolve (productImage.split('?')[1].concat('&'));
+    } else {
+      resolve (badge.value);
+    }
   }
 
   handleTabClick(event) {
@@ -410,6 +428,7 @@ class App extends React.Component {
                         <h3>Badges</h3>
                         <ul>
                           {products.map((product, index) => {
+                            console.log(product)
                             const name = `product${index}badge`;
                             return (
                               <React.Fragment key={product.skuId}>
@@ -417,10 +436,11 @@ class App extends React.Component {
                                 <ul>
                                   {badges.map((badge, badgeIdx) => {
                                     const id = `product${index}badge${badgeIdx}`;
+                                    // console.log('id', id, 'badge', badge, 'product.badge', product.badge)
                                     return (
                                       <li key={product.skuId + badge.name}>
                                         <label htmlFor={id}>
-                                          <input type="radio" id={id} name={name} checked={product.badge === badge} onChange={() => this.setBadge(index, badge)} />
+                                          <input type="radio" id={id} name={name} checked={product.badge.name === badge.name} onChange={() => this.setBadge(index, badge)} />
                                           {' '}
                                           {badge.name}
                                         </label>
