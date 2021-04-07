@@ -73,7 +73,6 @@ class App extends React.Component {
     const country = this.state.countryType;
     return fetch(`/skus/${sku}?country=${country}`)
       .then((response) => response.json())
-      // .then(data => { console.log(data); return data; })
       .then((data) => {
         if (data.code === 'ESOCKETTIMEDOUT') {
           this.setState({ modalStyle: 'block', modalMessage: '500 server error. Please try again later.' });
@@ -137,7 +136,6 @@ class App extends React.Component {
     const productImage = products[productIdx].image;
     const newBadge = new Promise ((resolve, reject) => {this.checkBadge(resolve, badge, productImage)});
     newBadge.then(newBadge => {
-      console.log('hello im new badge', newBadge)
       const newProduct = {
         ...products[productIdx],
         badge: {name: badge.name, value: newBadge},
@@ -157,7 +155,6 @@ class App extends React.Component {
     if (badge.name === 'Allure') {
       let imageURL = productImage.split('?')[1] === undefined ? '': productImage.split('?')[1].concat('&');
       imageURL = imageURL.includes('clean') ? '' : imageURL;
-      console.log("imageURL", imageURL)
       if (imageURL === ''){
         this.setState({modalStyle:"block", modalMessage: 'no allure badge available in Sephora database by default. Adding Allure 2018 badge.'})
         resolve('pb=2020-03-allure-best-2018&');
@@ -437,7 +434,6 @@ class App extends React.Component {
                         <h3>Badges</h3>
                         <ul>
                           {products.map((product, index) => {
-                            console.log(product)
                             const name = `product${index}badge`;
                             return (
                               <React.Fragment key={product.skuId}>
@@ -445,7 +441,6 @@ class App extends React.Component {
                                 <ul>
                                   {badges.map((badge, badgeIdx) => {
                                     const id = `product${index}badge${badgeIdx}`;
-                                    // console.log('id', id, 'badge', badge, 'product.badge', product.badge)
                                     return (
                                       <li key={product.skuId + badge.name}>
                                         <label htmlFor={id}>
