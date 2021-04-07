@@ -56,6 +56,7 @@ class App extends React.Component {
       birbProducts: [],
       birbType: 'availablenow',
       modalStyle: 'none',
+      modalMessage: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleBirbInputChange = this.handleBirbInputChange.bind(this);
@@ -75,7 +76,7 @@ class App extends React.Component {
       // .then(data => { console.log(data); return data; })
       .then((data) => {
         if (data.code === 'ESOCKETTIMEDOUT') {
-          this.setState({ modalStyle: 'block' });
+          this.setState({ modalStyle: 'block', modalMessage: '500 server error. Please try again later.' });
         }
         let price;
         if (data.listPrice.split('.')[1] !== '00') {
@@ -154,7 +155,15 @@ class App extends React.Component {
 
   checkBadge (resolve, badge, productImage) {
     if (badge.name === 'Allure') {
-      resolve (productImage.split('?')[1].concat('&'));
+      let imageURL = productImage.split('?')[1] === undefined ? '': productImage.split('?')[1].concat('&');
+      imageURL = imageURL.includes('clean') ? '' : imageURL;
+      console.log("imageURL", imageURL)
+      if (imageURL === ''){
+        this.setState({modalStyle:"block", modalMessage: 'no allure badge available in Sephora database by default. Adding Allure 2018 badge.'})
+        resolve('pb=2020-03-allure-best-2018&');
+      } else {
+        resolve (imageURL);
+      }
     } else {
       resolve (badge.value);
     }
@@ -489,7 +498,7 @@ class App extends React.Component {
 <a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p7' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
             />
           </div>
-          <Modal modalStyle={this.state.modalStyle} closeModal={this.closeModal} />
+          <Modal modalStyle={this.state.modalStyle} closeModal={this.closeModal} modalMessage={this.state.modalMessage} />
         </article>
       </div>
     );
