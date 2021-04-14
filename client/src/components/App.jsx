@@ -134,35 +134,25 @@ class App extends React.Component {
     
     const { products } = this.state;
     const productImage = products[productIdx].image;
-    const newBadge = new Promise ((resolve, reject) => {this.checkBadge(resolve, badge, productImage)});
-    newBadge.then(newBadge => {
-      const newProduct = {
-        ...products[productIdx],
-        badge: {name: badge.name, value: newBadge},
-      }
-
-      return newProduct;
-    }).then(newProduct => {
-        const newProducts = [...products];
-        newProducts[productIdx] = newProduct;
-        return newProducts;
-      }).then((newProducts) => this.setState({
-        products: newProducts,
-      }));
+    const newBadge = this.checkBadge(badge, productImage);
+    const newProduct = {...products[productIdx], badge: {name: badge.name, value: newBadge}};
+    const newProducts = [...products];
+    newProducts[productIdx] = newProduct;
+    this.setState({products:newProducts});
   }
 
-  checkBadge (resolve, badge, productImage) {
+  checkBadge (badge, productImage) {
     if (badge.name === 'Allure') {
       let imageURL = productImage.split('?')[1] === undefined ? '': productImage.split('?')[1].concat('&');
       imageURL = imageURL.includes('clean') ? '' : imageURL;
       if (imageURL === ''){
         this.setState({modalStyle:"block", modalMessage: 'no allure badge available in Sephora database by default. Adding Allure 2018 badge.'})
-        resolve('pb=2020-03-allure-best-2018&');
+        return('pb=2020-03-allure-best-2018&');
       } else {
-        resolve (imageURL);
+        return (imageURL);
       }
     } else {
-      resolve (badge.value);
+      return (badge.value);
     }
   }
 
