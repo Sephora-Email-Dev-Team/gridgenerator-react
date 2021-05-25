@@ -397,6 +397,11 @@ label {
   margin: 60px 0;
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 6px;
+}
+
 input[type="radio"]:after,
 input[type="radio"]:checked:after {
   top: -2px;

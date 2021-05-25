@@ -9,14 +9,14 @@ function BroadcastBIRB(props) {
   return (
     <div className="form-row">
       <label htmlFor="broadcast">
-        Broadcast templates
-        {' '}
         <input type="radio" id="broadcast" name="templateType" value="broadcast" onChange={handleInputChange} checked={templateType === 'broadcast'} />
+        {' '}
+        Broadcast templates
       </label>
       <label htmlFor="birb">
-        BIRB templates
-        {' '}
         <input type="radio" id="birb" name="templateType" value="birb" onChange={handleInputChange} checked={templateType === 'birb'} />
+        {' '}
+        BIRB templates
       </label>
     </div>
   );

@@ -21,14 +21,14 @@ function Broadcast(props) {
           </div>
           <div className="form-row" id="country">
             <label htmlFor="country-us">
-              US
-              {' '}
               <input type="radio" id="country-us" name="countryType" value="us" onChange={handleInputChange} checked={countryType === 'us'} />
+              {' '}
+              US
             </label>
             <label htmlFor="country-ca">
-              Canada
-              {' '}
               <input type="radio" id="country-ca" name="countryType" value="ca" onChange={handleInputChange} checked={countryType === 'ca'} />
+              {' '}
+              Canada
             </label>
           </div>
           <input type="submit" value="Submit" id="submit" />
@@ -36,52 +36,52 @@ function Broadcast(props) {
         <div id="typeofgrid">
           <h3>Type of the grid</h3>
           <label htmlFor="oneup">
-            1up grid
-            {' '}
             <input type="radio" id="oneup" name="gridType" value="oneup" onChange={handleInputChange} checked={gridType === 'oneup'} />
+            {' '}
+            1up grid
           </label>
           <label htmlFor="oneupnew">
+            <input type="radio" id="oneupnew" name="gridType" value="oneupnew" onChange={handleInputChange} checked={gridType === 'oneupnew'} />
+            {' '}
             1up
             {' '}
             <span className="newtag">NEW</span>
             {' '}
             grid
-            {' '}
-            <input type="radio" id="oneupnew" name="gridType" value="oneupnew" onChange={handleInputChange} checked={gridType === 'oneupnew'} />
           </label>
           <label htmlFor="twobyfour">
-            2x4 grid
-            {' '}
             <input type="radio" id="twobyfour" name="gridType" value="twobyfour" onChange={handleInputChange} checked={gridType === 'twobyfour'} />
+            {' '}
+            2x4 grid
           </label>
           <label htmlFor="twobyfournew">
+            <input type="radio" id="twobyfournew" name="gridType" value="twobyfournew" onChange={handleInputChange} checked={gridType === 'twobyfournew'} />
+            {' '}
             2x4
             {' '}
             <span className="newtag">NEW</span>
             {' '}
             grid
-            {' '}
-            <input type="radio" id="twobyfournew" name="gridType" value="twobyfournew" onChange={handleInputChange} checked={gridType === 'twobyfournew'} />
           </label>
           <label htmlFor="threebytwonew">
+            <input type="radio" id="threebytwonew" name="gridType" value="threebytwonew" onChange={handleInputChange} checked={gridType === 'threebytwonew'} />
+            {' '}
             3x2
             {' '}
             <span className="newtag">NEW</span>
             {' '}
             grid
-            {' '}
-            <input type="radio" id="threebytwonew" name="gridType" value="threebytwonew" onChange={handleInputChange} checked={gridType === 'threebytwonew'} />
           </label>
           <br />
           <label htmlFor="ctwobyfour">
-            Certona 2x4 grid
-            {' '}
             <input type="radio" id="ctwobyfour" name="gridType" value="ctwobyfour" onChange={handleInputChange} checked={gridType === 'ctwobyfour'} />
+            {' '}
+            Certona 2x4 grid
           </label>
           <label htmlFor="cthreebyone">
-            Certona 3x1 grid
-            {' '}
             <input type="radio" id="cthreebyone" name="gridType" value="cthreebyone" onChange={handleInputChange} checked={gridType === 'cthreebyone'} />
+            {' '}
+            Certona 3x1 grid
           </label>
         </div>
         {gridType === 'ctwobyfour' || gridType === 'cthreebyone'
