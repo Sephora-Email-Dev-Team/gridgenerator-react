@@ -370,7 +370,23 @@ label {
   border-radius: 5px;
   padding: 12px;
   margin-bottom: 10px;
+  line-height: 2em;
 }
+
+#typeofgrid,
+#checkboxes,
+#badges {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+#typeofgrid label,
+#checkboxes label,
+#badges label {
+  white-space: nowrap;
+}
+
 
 #badges ul {
   /* margin-bottom: 15px; */
@@ -387,10 +403,6 @@ label {
 #badges input[type="radio"]:checked:after {
   top: -2px;
   left: -4px;
-}
-
-#codewindow h2 {
-  margin: 60px 0 25px;
 }
 
 #examples {
@@ -454,11 +466,9 @@ input[type="checkbox"]:after {
 }
 
 h2 {
-  padding: 20px 0 10px;
   font-weight: normal;
-  /* color: black; */
-  font-size: 30px;
-  margin: 0 auto;
+  font-size: 26px;
+  margin: 20px 0;
 }
 
 .topline {
@@ -576,17 +586,6 @@ form,
   min-height: 350px;
 }
 
-#typeofgrid,
-#checkboxes,
-#badges {
-  display: flex;
-  flex-direction: column;
-  line-height: 2em;
-  margin-right: 10px;
-}
-
-#typeofgrid label,
-#checkboxes label,
-#badges label {
-  white-space: nowrap;
+#linkgens p:first-child {
+  margin-top: 0;
 }

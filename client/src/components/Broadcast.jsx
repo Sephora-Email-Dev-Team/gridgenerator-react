@@ -9,14 +9,11 @@ function Broadcast(props) {
   } = props;
   return (
     <div className="rows">
-      {/* <h2 id="step2">Preferences</h2> */}
+      <h2>Product Information</h2>
       <div className="columns">
         <form onSubmit={handleFormSubmit} id="linkgens">
           <div>
-            <label htmlFor="links">
-              Paste your links here, one each line:
-              {' '}
-            </label>
+            <p>Paste your HTML links here, one each line:</p>
             <textarea className="links" id="links" name="textareaValue" value={textareaValue} onChange={handleInputChange} />
           </div>
           <div className="form-row" id="country">
@@ -34,7 +31,7 @@ function Broadcast(props) {
           <input type="submit" value="Submit" id="submit" />
         </form>
         <div id="typeofgrid">
-          <h3>Type of the grid</h3>
+          <h3>Grid Type</h3>
           <label htmlFor="oneup">
             <input type="radio" id="oneup" name="gridType" value="oneup" onChange={handleInputChange} checked={gridType === 'oneup'} />
             {' '}

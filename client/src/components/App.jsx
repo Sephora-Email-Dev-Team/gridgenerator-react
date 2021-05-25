@@ -319,8 +319,9 @@ class App extends React.Component {
                 setBadge={this.setBadge}
               />
             )}
-          <h2>Step 3: Get your code</h2>
           <div id="codewindow">
+            <h2>Template Output</h2>
+            <p>Generated template code will appear below.</p>
             <div className="form-row tab">
               <button type="button" value="codeview" onClick={this.handleTabClick}>Generated Code</button>
               <button type="button" value="preview" onClick={this.handleTabClick}>Preview</button>

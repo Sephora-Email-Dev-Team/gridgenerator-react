@@ -9,7 +9,7 @@ function Birb(props) {
   } = props;
   return (
     <div>
-      <h2>Step 1: Paste your information</h2>
+      <h2>Product Information</h2>
       <form onSubmit={handleBirbFormSubmit}>
         <div className="birb">
           <div className="brand-input">
@@ -83,13 +83,13 @@ function Birb(props) {
             </label>
           </div>
           <div className="link-input">
-            <label htmlFor="links">
+            <label htmlFor="birb-links">
               Links:
               {' '}
               <br />
               <textarea
                 wrap="off"
-                id="links"
+                id="birb-links"
                 name="birbLinks"
                 value={birbLinks.join('\n')}
                 onChange={handleBirbInputChange}
@@ -101,10 +101,8 @@ function Birb(props) {
           <input type="submit" value="Submit" id="submit" />
         </div>
       </form>
-      <h2>Step 2: Choose your preferences</h2>
-      <br />
       <div id="typeofbirb">
-        <h3>Type of the header</h3>
+        <h3>Header Type</h3>
         <label htmlFor="availablenow">
           <input type="radio" id="availablenow" name="birbType" value="availablenow" onChange={handleInputChange} checked={birbType === 'availablenow'} />
           {' '}
