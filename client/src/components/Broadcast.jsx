@@ -124,6 +124,7 @@ function Broadcast(props) {
                         <li key={product.skuId}>
                           <b>
                             Pick
+                            {' '}
                             {index + 1}
                           </b>
                           :

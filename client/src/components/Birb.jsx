@@ -106,24 +106,24 @@ function Birb(props) {
       <div id="typeofbirb">
         <h3>Type of the header</h3>
         <label htmlFor="availablenow">
-          Available Now
-          {' '}
           <input type="radio" id="availablenow" name="birbType" value="availablenow" onChange={handleInputChange} checked={birbType === 'availablenow'} />
+          {' '}
+          Available Now
         </label>
         <label htmlFor="comingsoon">
-          Coming Soon
-          {' '}
           <input type="radio" id="comingsoon" name="birbType" value="comingsoon" onChange={handleInputChange} checked={birbType === 'comingsoon'} />
+          {' '}
+          Coming Soon
         </label>
         <label htmlFor="100points">
-          100 points
-          {' '}
           <input type="radio" id="100points" name="birbType" value="100points" onChange={handleInputChange} checked={birbType === '100points'} />
+          {' '}
+          100 points
         </label>
         <label htmlFor="250points">
-          250 points
-          {' '}
           <input type="radio" id="250points" name="birbType" value="250points" onChange={handleInputChange} checked={birbType === '250points'} />
+          {' '}
+          250 points
         </label>
       </div>
     </div>
