@@ -567,11 +567,14 @@ form,
   margin: 0 20px 0 0;
 }
 
-.links {
-  min-height: 600px;
+#links {
   font-size: 14px;
+  min-height: 600px;
 }
 
+#example-links {
+  min-height: 350px;
+}
 
 #typeofgrid,
 #checkboxes,
