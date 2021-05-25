@@ -17,7 +17,7 @@ function Broadcast(props) {
               Paste your links here, one each line:
               {' '}
             </label>
-            <textarea id="links" name="textareaValue" value={textareaValue} onChange={handleInputChange} />
+            <textarea className="links" id="links" name="textareaValue" value={textareaValue} onChange={handleInputChange} />
           </div>
           <div className="form-row" id="country">
             <label htmlFor="country-us">

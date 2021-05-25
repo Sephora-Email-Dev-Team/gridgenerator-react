@@ -335,10 +335,9 @@ class App extends React.Component {
           <div id="examples">
             <h3>Example links</h3>
             <textarea
-              id="links"
+              className="links"
+              id="example-links"
               name="links"
-              rows="25"
-              cols="100"
               defaultValue={`<a href="[@trackurl LinkID='' LinkName='milksunshinetint' LinkTag='pl-p1' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P410176?skuId=2414258&$deep_link=true[/@trackurl]"  target="_blank">
 <a href="[@trackurl LinkID='' LinkName='ilialipmask' LinkTag='pl-p2' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P467765?skuId=2410561&$deep_link=true[/@trackurl]"  target="_blank">
 <a href="[@trackurl LinkID='' LinkName='kosassmoothingpowder' LinkTag='pl-p3' LinkDesc='' Tracked='ON' Encode='OFF' OfferID='' LinkType='REDIRECT']https://www.sephora.com/product/P468685?skuId=2414373&$deep_link=true[/@trackurl]"  target="_blank">

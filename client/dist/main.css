@@ -292,6 +292,7 @@ textarea {
   border: 2px solid black;
   line-height: 130%;
   box-sizing: border-box;
+  width: 100%;
 }
 
 #preview {
@@ -560,8 +561,7 @@ form,
   margin: 0 20px 0 0;
 }
 
-#links {
-  width: 100%;
+.links {
   min-height: 600px;
   font-size: 14px;
 }
