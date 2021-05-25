@@ -401,6 +401,7 @@ input[type="radio"]:after,
 input[type="radio"]:checked:after {
   top: -2px;
   left: -1px;
+  border-radius: 15px;
 }
 
 input[type="checkbox"]:after,
@@ -415,13 +416,13 @@ input[type="checkbox"]:after,
 input[type="checkbox"]:checked:after {
   width: 15px;
   height: 15px;
-  border-radius: 15px;
   position: relative;
   background-color: #fff;
   content: "";
   display: inline-block;
   visibility: visible;
   border: 2px solid black;
+  box-shadow: inset white 0px 0px 0px 3px;
 }
 
 input[type="radio"]:checked:after,
