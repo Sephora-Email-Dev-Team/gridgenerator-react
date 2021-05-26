@@ -365,7 +365,6 @@ label {
 #typeofgrid,
 #tagname,
 #typeofbirb {
-  /* font-family: "Helvetica Neue", Helvetica, sans-serif; */
   background-color: rgb(246, 246, 248);
   border-radius: 5px;
   padding: 12px;
@@ -387,14 +386,11 @@ label {
   white-space: nowrap;
 }
 
-
 #badges ul {
-  /* margin-bottom: 15px; */
   padding: 0;
 }
 
 #badges li {
-  /* margin-bottom: 2px; */
   list-style-type: none;
   display: inline-block;
 }
@@ -486,11 +482,6 @@ header {
   color: white;
   padding: 2px;
 }
-/* 
-form,
-.form-item {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-} */
 
 .form-row {
   margin: 20px 0;
@@ -557,14 +548,6 @@ form,
   text-decoration: none;
   cursor: pointer;
 }
-
-/*
-.rows {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: auto;
-} */
 
 .columns {
   display: flex;
