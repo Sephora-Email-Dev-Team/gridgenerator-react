@@ -177,8 +177,6 @@ class App extends React.Component {
           products: data,
         });
       });
-
-    document.location = '#step2';
   }
 
   handleInputChange(event) {
