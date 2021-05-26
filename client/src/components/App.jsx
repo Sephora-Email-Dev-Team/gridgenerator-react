@@ -16,6 +16,12 @@ import templatebirb from '../../../templates/template-birb';
 import TemplateChooser from './TemplateChooser';
 import Broadcast from './Broadcast';
 
+window.addEventListener('beforeunload', (e) => {
+  // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeunload
+  e.preventDefault();
+  e.returnValue = '';
+});
+
 const badges = [
   {
     name: 'None',
