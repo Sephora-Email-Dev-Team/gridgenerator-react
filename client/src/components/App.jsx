@@ -13,7 +13,7 @@ import template3x2new from '../../../templates/template3x2-new';
 import templatec2x4 from '../../../templates/templateC2x4';
 import templatec3x1 from '../../../templates/templateC3x1';
 import templatebirb from '../../../templates/template-birb';
-import BroadcastBIRB from '../../../templates/templates-broadcast-BIRB';
+import TemplateChooser from './TemplateChooser';
 import Broadcast from './Broadcast';
 
 const badges = [
@@ -277,7 +277,7 @@ class App extends React.Component {
           <div className="topline" />
         </header>
         <article className="fixed">
-          <BroadcastBIRB
+          <TemplateChooser
             templateType={this.state.templateType}
             handleInputChange={this.handleInputChange}
           />

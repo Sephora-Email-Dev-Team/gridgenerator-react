@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-function BroadcastBIRB(props) {
+function TemplateChooser(props) {
   const {
     handleInputChange,
     templateType,
@@ -22,4 +22,4 @@ function BroadcastBIRB(props) {
   );
 }
 
-export default BroadcastBIRB;
+export default TemplateChooser;
