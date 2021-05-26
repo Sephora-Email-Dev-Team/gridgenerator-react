@@ -504,14 +504,12 @@ form,
 .birb div {
   flex-grow: 1;
   margin-right: 10px;
-}
-
-.birb div.online-only-input {
-  flex-grow: 1;
+  flex-basis: 200px;
 }
 
 .birb div.link-input {
-  flex-grow: 40;
+  flex-grow: 2;
+  flex-basis: 600px;
 }
 
 .birb textarea {
