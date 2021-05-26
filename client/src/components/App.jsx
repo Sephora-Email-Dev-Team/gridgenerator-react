@@ -140,29 +140,26 @@ class App extends React.Component {
   }
 
   setBadge(productIdx, badge) {
-    
     const { products } = this.state;
     const productImage = products[productIdx].image;
     const newBadge = this.checkBadge(badge, productImage);
-    const newProduct = {...products[productIdx], badge: {name: badge.name, value: newBadge}};
+    const newProduct = { ...products[productIdx], badge: { name: badge.name, value: newBadge } };
     const newProducts = [...products];
     newProducts[productIdx] = newProduct;
-    this.setState({products:newProducts});
+    this.setState({ products: newProducts });
   }
 
-  checkBadge (badge, productImage) {
+  checkBadge(badge, productImage) {
     if (badge.name === 'Allure') {
-      let imageURL = productImage.split('?')[1] === undefined ? '': productImage.split('?')[1].concat('&');
+      let imageURL = productImage.split('?')[1] === undefined ? '' : productImage.split('?')[1].concat('&');
       imageURL = imageURL.includes('clean') ? '' : imageURL;
-      if (imageURL === ''){
-        this.setState({modalStyle:"block", modalMessage: 'no allure badge available in Sephora database by default. Adding Allure 2018 badge.'})
-        return('pb=2020-03-allure-best-2018&');
-      } else {
-        return (imageURL);
+      if (imageURL === '') {
+        this.setState({ modalStyle: 'block', modalMessage: 'no allure badge available in Sephora database by default. Adding Allure 2018 badge.' });
+        return ('pb=2020-03-allure-best-2018&');
       }
-    } else {
-      return (badge.value);
+      return (imageURL);
     }
+    return (badge.value);
   }
 
   handleTabClick(event) {
@@ -353,7 +350,11 @@ class App extends React.Component {
 <a href="[@trackurl LinkID='' LinkName='pmgdivinerosepalette' LinkTag='pl-p8' LinkDesc='' Tracked='ON' Encode='OFF' LinkType='REDIRECT']https://www.sephora.com/product/P458276?skuId=2351542&$deep_link=true[/@trackurl]" target="_blank">`}
             />
           </div>
-          <Modal modalStyle={this.state.modalStyle} closeModal={this.closeModal} modalMessage={this.state.modalMessage} />
+          <Modal
+            modalStyle={this.state.modalStyle}
+            closeModal={this.closeModal}
+            modalMessage={this.state.modalMessage}
+          />
         </article>
       </div>
     );
